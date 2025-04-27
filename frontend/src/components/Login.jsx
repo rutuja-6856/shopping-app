@@ -42,8 +42,9 @@ const Login = () => {
                         </ul>
                     </div>
                 </div>
-            </nav>
-            <h1 className="veg-h mr f1">Login</h1>
+            </nav><div style={{ height:"auto", width:"100%", display:"flex", justifyContent:"center", alignItems:"center" , flexDirection:"column"}}>
+
+            <h1 className="veg-h mr f1" style={{marginBottom:"-10px"}}>Login</h1>
             <form className="f2 login-form login" method="POST" onSubmit={handleLogin} autoComplete="off" >
                 <div className="mb-3">
                     <label className="form-label">Email address</label>
@@ -58,6 +59,7 @@ const Login = () => {
                 <div>Account is not created</div>
                 <Link to="/SignUp" type="submit" className="btn btn-signup">SigUp</Link>
             </form>
+            </div>
         </>
     )
 }

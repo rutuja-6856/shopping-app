@@ -3,7 +3,8 @@
 const Footer = () => {
   return (
     <div className="footer-bottom">
-   <strong>E-Commerce.</strong> &copy;  All rights reserved 2024.
+   {/* <strong>E-Commerce.</strong> &copy;  All rights reserved 2025. */}
+    <strong>E-Commerce.</strong>
 </div>
   )
 }

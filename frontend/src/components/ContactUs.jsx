@@ -25,9 +25,9 @@ const ContactUs = () => {
                     <p>We value your feedback! Whether you have a question, suggestion, or just want to say hello, we are here to listen. Please feel free to reach out to us using any of the methods below. Your input helps us improve and better serve your needs.</p>
                 </div>
                 <div className="UserF">
-                    <strong>Name :</strong>  <input className='uinput' type="text" placeholder='Enter Name..' onChange={(e) => { setName(e.target.value) }} /> <br />
-                    <strong>Number :</strong> <input className='uinput' type="text" placeholder='Enter Number..' onChange={(e) => { setNumber(e.target.value) }} /> <br />
-                    <strong>Feedback :</strong> <textarea rows="2" cols="30" className='uinput' type="text" placeholder='Enter Feedback..' onChange={(e) => { setFeedback(e.target.value) }} /> <br />
+                    <strong>Name :</strong>  <input className='uinput' type="text" placeholder='Enter Name..'value={name}  onChange={(e) => { setName(e.target.value) }} /> <br />
+                    <strong>Number :</strong> <input className='uinput' type="text" placeholder='Enter Number..'value={number} onChange={(e) => { setNumber(e.target.value) }} /> <br />
+                    <strong>Feedback :</strong> <textarea rows="2" cols="30" className='uinput' type="text" placeholder='Enter Feedback..' value={feedback} onChange={(e) => { setFeedback(e.target.value) }} /> <br />
                     <button type='button' className='ubtn' onClick={handleFeedback}>Submit</button>
                 </div>
             </div>

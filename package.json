@@ -13,6 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "concurrently": "^8.2.2",
-    "cores": "^0.8.5"
+    "cores": "^0.8.0"
   }
 }

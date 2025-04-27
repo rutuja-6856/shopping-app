@@ -40,8 +40,10 @@ const SignUp = () => {
                         </ul>
                     </div>
                 </div>
-            </nav>
-            <h1 className="veg-h mr f1">SignUp</h1>
+            </nav> <div style={{ height:"auto", width:"100%", display:"flex", justifyContent:"center", alignItems:"center" , flexDirection:"column"}}> 
+
+            
+            <h1 className="veg-h mr f1" style={{marginBottom:"-10px"}}>SignUp</h1>
             <form className="f2 login-form signup" onSubmit={handleSignUp} autoComplete="off" >
                 <div className="mb-3">
                     <label className="form-label">Full Name</label>
@@ -59,6 +61,7 @@ const SignUp = () => {
                 <div className='clr'>Already have Account..!!</div>
                 <Link to="/Login" type="submit" className="btn btn-login">Login</Link>
             </form>
+            </div>
         </>
     )
 }
