@@ -1,5 +1,8 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import CssBaseline from '@mui/material/CssBaseline';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 // import NavBar from "./components/NavBar"
 // import NavBarRoutes from './components/NavBarRoutes'
 // import About from "./components/Mobiles"
@@ -25,11 +28,50 @@ import AddElectronics from './SellerComponent/AddElectronics'
 import AddShoes from './SellerComponent/AddShoes'
 import EditShoes from './SellerComponent/EditShoes'
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#1976d2',  // Blue color
+    },
+    secondary: {
+      main: '#dc004e',  // Pink color
+    },
+  },
+});
+
 function App() {
+
 
   return (
     <>
-      <Router>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/HomePage" element={<HomePage />}></Route>
+            <Route path="/Mobile" element={<Mobiles />}></Route>
+            <Route path="/Electronics" element={<Electronics />}></Route>
+            <Route path="/Shoes" element={<Shoes />} />
+            <Route path="/TopOffer" element={<TopOffer />} />
+            <Route path="/WishList" element={<WishList />} />
+            <Route path="/Cart" element={<CartData />} />
+            <Route path="/ContactUs" element={<ContactUs />} />
+            <Route path="/SignUp" element={<SignUp />} />
+            <Route path="/Login" element={<Login />} />
+            {/* <Route path="/AddData" element={<AddData />} /> */}
+            <Route path="/forgotPassword" element={<ForgotPassword />} />
+            <Route path="/BuyNow" element={<BuyNow />} />
+            <Route path="/AddMobile" element={<AddMobile />} />
+            <Route path="/DisplayMobiles" element={<DisplayMobile />} />
+            <Route path="/DisplayShoes" element={<DisplayShoes />} />
+            <Route path="/DisplayElectronics" element={<DisplayElectronics />} />
+            <Route path="/AddElectronics" element={<AddElectronics />} />
+            <Route path="/AddShoes" element={<AddShoes />} />
+            <Route path="/editShoes/:id" element={<EditShoes />} />
+          </Routes>
+        </Router>
+      </ThemeProvider>
+      {/* <Router>
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/HomePage" element={<HomePage />}></Route>
@@ -43,17 +85,17 @@ function App() {
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Login" element={<Login />} />
           {/* <Route path="/AddData" element={<AddData />} /> */}
-          <Route path="/forgotPassword" element={<ForgotPassword />} />
-          <Route path="/BuyNow" element={<BuyNow />} />
-          <Route path="/AddMobile" element={<AddMobile />} />
-          <Route path="/DisplayMobiles" element={<DisplayMobile />} />
-          <Route path="/DisplayShoes" element={<DisplayShoes />} />
-          <Route path="/DisplayElectronics" element={<DisplayElectronics />} />
-          <Route path="/AddElectronics" element={<AddElectronics />} />
-          <Route path="/AddShoes" element={<AddShoes />} />
-          <Route path="/editShoes/:id" element={<EditShoes />} />
-        </Routes>
-      </Router>
+      {/* <Route path="/forgotPassword" element={<ForgotPassword />} />
+      <Route path="/BuyNow" element={<BuyNow />} />
+      <Route path="/AddMobile" element={<AddMobile />} />
+      <Route path="/DisplayMobiles" element={<DisplayMobile />} />
+      <Route path="/DisplayShoes" element={<DisplayShoes />} />
+      <Route path="/DisplayElectronics" element={<DisplayElectronics />} />
+      <Route path="/AddElectronics" element={<AddElectronics />} />
+      <Route path="/AddShoes" element={<AddShoes />} />
+      <Route path="/editShoes/:id" element={<EditShoes />} /> */}
+      {/* </Routes> */}
+      {/* </Router> */}
     </>
   )
 }

@@ -1,14 +1,17 @@
-// import React from 'react'
+import React from 'react'
+import { Dialog } from '@mui/material';
 import { useDispatch } from "react-redux"
 import { addToCart } from "../features/CartSlice"
 import { addToWishList } from "../features/CartSlice"
-import { useState,useEffect } from "react"
+import { useState, useEffect } from "react"
 import axios from "axios"
 import Footer from "./Footer"
 import NavBar from "./NavBar"
+import PlaceOrderForm from "./PlaceOrderForm"
 
 const Electronics = () => {
   const dispatch = useDispatch()
+  const [openPopUp, setOpenPopUp] = useState(false)
   const data = [
     {
       id: 101,
@@ -78,6 +81,11 @@ const Electronics = () => {
 
     setFilterData(lowFilter)
   }
+  const handleClose = () => {
+    console.log('onclose click')
+    setOpenPopUp(false); // Close the dialog
+  };
+
   const handleMediumFilter = () => {
     const mediumFilter = data.filter((item) => {
       return item.price > 5000 && item.price < 15000
@@ -95,7 +103,7 @@ const Electronics = () => {
 
   const fetchMobileData = async () => {
     try {
-      const response = await axios.get("http://localhost:9090/auth/getelectronics") 
+      const response = await axios.get("http://localhost:9090/auth/getelectronics")
       setElectronics(response.data)
     } catch (error) {
       console.log('Error during fetching data :', error)
@@ -127,7 +135,7 @@ const Electronics = () => {
                   </svg></h6>
                   <p className="card-text card-data">₹ {f.price}</p>
                   <button onClick={() => dispatch(addToCart(f))} type="button" className="mobileAddToCartBtn">Add to Cart</button>
-                  <button type="button" className=" mobileBuyNowBtn">Buy Now</button>
+                  <button type="button" className=" mobileBuyNowBtn" style={{ backgroundColor: 'red' }} onClick={() => { setOpenPopUp(true) }} >Buy Now</button>
                 </div>
               </div>
 
@@ -187,6 +195,12 @@ const Electronics = () => {
         </ul>
       </div>
       <Footer />
+
+      {openPopUp &&
+        <Dialog open={openPopUp} onClose={handleClose} backgroundColor={'red'}>
+          <PlaceOrderForm onClose={handleClose} />
+        </Dialog>
+      }
     </>
   )
 }
