@@ -53,7 +53,7 @@ const NavBar = () => {
                                 <Link className="nav-link nav-name" to="/ContactUs" >Feedback</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link nav-name" to="/BuyNow">Oders : {buyNow.length}</Link>
+                                <Link className="nav-link nav-name" to="/BuyNow">Oders </Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link nav-name" to="/WishList">WishList : {wishData.length}</Link>

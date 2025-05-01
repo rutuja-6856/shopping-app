@@ -2,35 +2,64 @@ import React, { useState } from 'react';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { TextField, Button, FormControl, InputLabel, Select, MenuItem, Box, Typography, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 
-function PlaceOrderForm({ onClose }) {
+function PlaceOrderForm({ onClose, product }) {
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
     const [contactNumber, setContactNumber] = useState('');
     const [paymentMethod, setPaymentMethod] = useState('cash-on-delivery');
-    const [successPopupOpen, setSuccessPopupOpen] = useState(false); // To control success popup
+    const [successPopupOpen, setSuccessPopupOpen] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Handle form submission, for example, an API call or cart update
-        console.log({
+        // const orderData = {
+        //     name,
+        //     address,
+        //     contactNumber,
+        //     paymentMethod,
+        // };
+        console.log('product', product)
+        const orderData = {
             name,
             address,
             contactNumber,
             paymentMethod,
-        });
+            product: {
+                productName: product?.name,
+                price: product?.price,
+                img: product?.img1?.props?.src,
+            }
+        };
 
-        // Open the success popup
-        setSuccessPopupOpen(true);
 
-        // Close the dialog by calling onClose after a brief delay to show success
-        setTimeout(() => {
-            onClose(); // Close the main dialog after success popup
-        }, 1500); // Delay to let the success popup appear for 1.5 seconds
+        try {
+            const response = await fetch("http://localhost:9090/order/place", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(orderData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setSuccessPopupOpen(true);
+                setTimeout(() => {
+                    onClose();
+                }, 1500);
+            } else {
+                alert(data.error || "Order failed");
+            }
+        } catch (error) {
+            console.error("Order Error:", error);
+            alert("Something went wrong while placing the order.");
+        }
     };
 
+
     const handleSuccessClose = () => {
-        setSuccessPopupOpen(false); // Close success popup
+        setSuccessPopupOpen(false);
     };
 
     return (

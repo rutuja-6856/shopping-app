@@ -1,6 +1,8 @@
 // import React from 'react'
 import { useState, useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { addToCart } from "../features/CartSlice"
 import { addToWishList } from "../features/CartSlice"
 import { buyNow } from "../features/CartSlice"
@@ -10,8 +12,17 @@ import { useNavigate } from "react-router-dom"
 // import axios from "axios"
 import NavBar from "./NavBar"
 import axios from "axios"
+import { Dialog } from "@mui/material"
+import PlaceOrderForm from "./PlaceOrderForm"
 
 const Mobiles = () => {
+  const { wishData } = useSelector((state) => state.cart)
+  const [openPopUp, setOpenPopUp] = useState(false)
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const handleClose = () => {
+    setOpenPopUp(false);
+    setSelectedProduct(null);
+  };
   const data = [
     {
       id: 201,
@@ -64,7 +75,7 @@ const Mobiles = () => {
     },
     {
       id: 208,
-      img1: <img src="https://m.media-amazon.com/images/I/81E8SogqwjL.jpg" alt=""  />,
+      img1: <img src="https://m.media-amazon.com/images/I/81E8SogqwjL.jpg" alt="" />,
       name: 'samsung s22 ultra',
       price: 51799,
       quantity: 1
@@ -123,7 +134,7 @@ const Mobiles = () => {
 
   useEffect(() => {
     fetchMobileData()
-  }, [mobileData])
+  }, [])
 
 
   return (
@@ -142,12 +153,30 @@ const Mobiles = () => {
                 {f.img1}
 
                 <div className="card-body">
-                  <h6 className="card-title card-data">{f.name} <svg onClick={() => dispatch(addToWishList(f))} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-suit-heart-fill wish-icon" viewBox="0 0 16 16">
+                  {/* <h6 className="card-title card-data">{f.name} <svg onClick={() => dispatch(addToWishList(f))} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-suit-heart-fill wish-icon" viewBox="0 0 16 16">
                     <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
-                  </svg></h6>
+                  </svg></h6> */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+
+                    <h6 className="card-title card-data">{f.name} </h6>
+                    {wishData?.some(item => item.id === f.id) ? (
+                      <FavoriteIcon
+                        sx={{ color: 'red', cursor: 'pointer' }}
+                        onClick={() => dispatch(addToWishList(f))}
+                      />
+                    ) : (
+                      <FavoriteBorderIcon
+                        sx={{ color: 'black', cursor: 'pointer' }}
+                        onClick={() => dispatch(addToWishList(f))}
+                      />
+                    )}
+                  </div>
                   <p className="card-text card-data">₹ {f.price}</p>
                   <button onClick={() => dispatch(addToCart(f))} type="button" className="mobileAddToCartBtn">Add to Cart</button>
-                  <button onClick={() => dispatch(buyNow(f)) && handleBuyNow()} type="button" className="mobileBuyNowBtn">Buy Now</button>
+                  <button type="button" className=" mobileBuyNowBtn" style={{ backgroundColor: 'red' }} onClick={() => {
+                    setOpenPopUp(true)
+                    setSelectedProduct(f)
+                  }} >Buy Now</button>
                 </div>
               </div>
 
@@ -172,7 +201,10 @@ const Mobiles = () => {
                   </svg></h6>
                   <p className="card-text card-data">₹ {f.price}</p>
                   <button onClick={() => dispatch(addToCart(f))} type="button" className="mobileAddToCartBtn">Add to Cart</button>
-                  <button type="button" className=" mobileBuyNowBtn">Buy Now</button>
+                  <button type="button" className=" mobileBuyNowBtn" style={{ backgroundColor: 'red' }} onClick={() => {
+                    setOpenPopUp(true)
+                    setSelectedProduct(f)
+                  }} >Buy Now</button>
                 </div>
               </div>
 
@@ -197,7 +229,10 @@ const Mobiles = () => {
                   </svg></h6>
                   <p className="card-text card-data">₹ {f.price}</p>
                   <button onClick={() => dispatch(addToCart(f))} type="button" className="mobileAddToCartBtn">Add to Cart</button>
-                  <button type="button" className=" mobileBuyNowBtn">Buy Now</button>
+                  <button type="button" className=" mobileBuyNowBtn" style={{}} onClick={() => {
+                    setOpenPopUp(true)
+                    setSelectedProduct(f)
+                  }} >Buy Now</button>
                 </div>
               </div>
 
@@ -207,6 +242,11 @@ const Mobiles = () => {
         </ul>
       </div>
       <Footer />
+      {openPopUp &&
+        <Dialog open={openPopUp} onClose={handleClose} backgroundColor={'red'}>
+          <PlaceOrderForm onClose={handleClose} product={selectedProduct} />
+        </Dialog>
+      }
     </>
   )
 }
