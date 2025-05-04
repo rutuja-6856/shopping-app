@@ -51,7 +51,7 @@ const SignUp = () => {
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Email address</label>
-                    <input type="text" name="email" onChange={(e) => setEmail(e.target.value)} className="form-control brd pass-len" autoComplete="false" required />
+                    <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} className="form-control brd pass-len" autoComplete="false" required />
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Password</label>

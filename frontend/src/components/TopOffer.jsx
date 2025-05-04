@@ -20,65 +20,131 @@ const TopOffer = () => {
     setOpenPopUp(false);
     setSelectedProduct(null);
   };
+  // const data = [
+  //   {
+  //     id: 401,
+  //     img1: <img src="https://5.imimg.com/data5/SELLER/Default/2021/9/ZO/MC/KM/93370416/new-apple-iphone-11-64gb-purple-500x500.jpg" alt="" />,
+  //     name: 'Iphone 11',
+  //     price: 39999,
+  //     quantity: 1
+  //   },
+  //   {
+  //     id: 402,
+  //     img1: <img src="https://i.ebayimg.com/images/g/3R8AAOSwTaJi6Qyn/s-l1200.jpg" alt="" />,
+  //     name: 'Samsung Z Flip',
+  //     price: 79199,
+  //     quantity: 1
+  //   },
+  //   {
+  //     id: 403,
+  //     img1: <img src="https://5.imimg.com/data5/SELLER/Default/2023/10/356127293/DS/BA/WQ/126530580/samsung-galaxy-s23-ultra-5g-cream-12gb-256gb-storage-99999.jpg" alt="" />,
+  //     name: 'Samsung Galaxy S23',
+  //     price: 69449,
+  //     quantity: 1
+  //   },
+  //   {
+  //     id: 404,
+  //     img1: <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/HQWW2?wid=4000&hei=4000&fmt=jpeg&qlt=95&.v=1681150922615" alt="" />,
+  //     name: 'Apple Watch SE',
+  //     price: 21969,
+  //     quantity: 1
+  //   },
+  //   {
+  //     id: 405,
+  //     img1: <img src="https://www.jiomart.com/images/product/original/493692274/lg-185-litres-5-star-direct-cool-single-door-refrigerator-scarlet-charm-gl-d201ascu-digital-o493692274-p599232104-1-202303110928.jpeg?im=Resize=(420,420)" alt="" />,
+  //     name: 'LG',
+  //     price: 22690,
+  //     quantity: 1
+  //   },
+  //   {
+  //     id: 406,
+  //     img1: <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_450,h_450/global/392290/03/sv01/fnd/EEA/fmt/png" alt="" />,
+  //     name: 'Puma',
+  //     price: 2299,
+  //     quantity: 1
+  //   },
+  //   {
+  //     id: 407,
+  //     img1: <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/379978/01/sv01/fnd/IND/fmt/png/Puma-Wish-Max-Men's-Running-Shoes" alt="" />,
+  //     name: 'Nike',
+  //     price: 2969,
+  //     quantity: 1
+  //   },
+  //   {
+  //     id: 408,
+  //     img1: <img src="https://oxygendigitalshop.com/media/cache/2500x0/catalog/product/s/a/sam_3_1_1692270166.webp" alt="" />,
+  //     name: 'Samsung 189 L ',
+  //     price: 19349,
+  //     quantity: 1
+  //   }
+  // ]
   const data = [
     {
       id: 401,
       img1: <img src="https://5.imimg.com/data5/SELLER/Default/2021/9/ZO/MC/KM/93370416/new-apple-iphone-11-64gb-purple-500x500.jpg" alt="" />,
-      name: 'Iphone 11',
+      name: 'iPhone 11',
       price: 39999,
-      quantity: 1
+      quantity: 1,
+      description: 'Apple iPhone 11 with 64GB storage, dual-camera system, and A13 Bionic chip for smooth performance.'
     },
     {
       id: 402,
       img1: <img src="https://i.ebayimg.com/images/g/3R8AAOSwTaJi6Qyn/s-l1200.jpg" alt="" />,
       name: 'Samsung Z Flip',
       price: 79199,
-      quantity: 1
+      quantity: 1,
+      description: 'Samsung Galaxy Z Flip with foldable design, stunning display, and advanced camera features.'
     },
     {
       id: 403,
       img1: <img src="https://5.imimg.com/data5/SELLER/Default/2023/10/356127293/DS/BA/WQ/126530580/samsung-galaxy-s23-ultra-5g-cream-12gb-256gb-storage-99999.jpg" alt="" />,
       name: 'Samsung Galaxy S23',
       price: 69449,
-      quantity: 1
+      quantity: 1,
+      description: 'Samsung Galaxy S23 Ultra 5G with 12GB RAM, 256GB storage, and high-resolution camera for premium photography.'
     },
     {
       id: 404,
       img1: <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/HQWW2?wid=4000&hei=4000&fmt=jpeg&qlt=95&.v=1681150922615" alt="" />,
       name: 'Apple Watch SE',
       price: 21969,
-      quantity: 1
+      quantity: 1,
+      description: 'Apple Watch SE with fitness tracking, heart rate monitor, and seamless iPhone integration.'
     },
     {
       id: 405,
       img1: <img src="https://www.jiomart.com/images/product/original/493692274/lg-185-litres-5-star-direct-cool-single-door-refrigerator-scarlet-charm-gl-d201ascu-digital-o493692274-p599232104-1-202303110928.jpeg?im=Resize=(420,420)" alt="" />,
-      name: 'LG',
+      name: 'LG Refrigerator',
       price: 22690,
-      quantity: 1
+      quantity: 1,
+      description: 'LG 185L 5-star single door refrigerator with direct cool technology and energy-efficient performance.'
     },
     {
       id: 406,
       img1: <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_450,h_450/global/392290/03/sv01/fnd/EEA/fmt/png" alt="" />,
-      name: 'Puma',
+      name: 'Puma Shoes',
       price: 2299,
-      quantity: 1
+      quantity: 1,
+      description: 'Puma sneakers with sleek design, cushioned sole, and great comfort for everyday wear.'
     },
     {
       id: 407,
-      img1: <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/379978/01/sv01/fnd/IND/fmt/png/Puma-Wish-Max-Men's-Running-Shoes" alt="" />,
-      name: 'Nike',
+      img1: <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/379978/01/sv01/fnd/IND/fmt/png/Puma-Wish-Max-Men\'s-Running-Shoes" alt="" />,
+      name: 'Nike Shoes',
       price: 2969,
-      quantity: 1
+      quantity: 1,
+      description: 'Nike Wish Max men’s running shoes with breathable mesh, lightweight build, and superior grip.'
     },
     {
       id: 408,
       img1: <img src="https://oxygendigitalshop.com/media/cache/2500x0/catalog/product/s/a/sam_3_1_1692270166.webp" alt="" />,
-      name: 'Samsung 189 L ',
+      name: 'Samsung 189L Refrigerator',
       price: 19349,
-      quantity: 1
+      quantity: 1,
+      description: 'Samsung 189L single door refrigerator with smart inverter, stylish design, and energy-saving features.'
     }
   ]
-
+  
   const [filterData, setFilterData] = useState([])
 
   const handleLowFilter = () => {
@@ -111,13 +177,13 @@ const TopOffer = () => {
         <ul className='veg'>
           {data.map((f, index) => (
             <li key={index} type='none' className='mr'>
-              <div className="card" style={{ width: '18rem ', height: '430px' }} >
+              <div className="card" style={{ width: '18rem ', height: f?.description ? '500px' : '430px' }} >
                 {/* style="width: 18rem;" */}
                 {f.img1}
                 <div className="card-body">
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
 
-                    <h6 className="card-title card-data">{f.name} </h6>
+                    <h6 >{f.name} </h6>
                     {wishData?.some(item => item.id === f.id) ? (
                       <FavoriteIcon
                         sx={{ color: 'red', cursor: 'pointer' }}
@@ -130,9 +196,18 @@ const TopOffer = () => {
                       />
                     )}
                   </div>
-                  {/* <h6 className="card-title card-data">{f.name} <svg onClick={() => dispatch(addToWishList(f))} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-suit-heart-fill wish-icon" viewBox="0 0 16 16">
+                  {/* <h6 >{f.name} <svg onClick={() => dispatch(addToWishList(f))} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-suit-heart-fill wish-icon" viewBox="0 0 16 16">
                     <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
                   </svg></h6> */}
+                  <p style={{
+                    display: '-webkit-box',
+                    WebkitLineClamp: 3,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'
+                  }}>
+                    {f?.description}
+                  </p>
                   <p className="card-text card-data">₹ {f.price}</p>
                   <button onClick={() => dispatch(addToCart(f))} type="button" className="mobileAddToCartBtn">Add to Cart</button>
                   <button type="button" className=" mobileBuyNowBtn" onClick={() => {
@@ -153,14 +228,23 @@ const TopOffer = () => {
         <ul className='veg'>
           {filterData.map((f, index) => (
             <li key={index} type='none' className='mr'>
-              <div className="card" style={{ width: '18rem ', height: '430px' }} >
+              <div className="card" style={{ width: '18rem ', height: f?.description ? '500px' : '430px' }} >
                 {/* style="width: 18rem;" */}
                 {f.img1}
 
                 <div className="card-body">
-                  <h6 className="card-title card-data">{f.name} <svg onClick={() => dispatch(addToWishList(f))} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-suit-heart-fill wish-icon" viewBox="0 0 16 16">
+                  <h6 >{f.name} <svg onClick={() => dispatch(addToWishList(f))} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-suit-heart-fill wish-icon" viewBox="0 0 16 16">
                     <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
                   </svg></h6>
+                  <p style={{
+                    display: '-webkit-box',
+                    WebkitLineClamp: 3,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'
+                  }}>
+                    {f?.description}
+                  </p>
                   <p className="card-text card-data">₹ {f.price}</p>
                   <button onClick={() => dispatch(addToCart(f))} type="button" className="mobileAddToCartBtn">Add to Cart</button>
                   <button type="button" className=" mobileBuyNowBtn" onClick={() => {
